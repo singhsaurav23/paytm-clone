@@ -12,10 +12,8 @@ export const authOptions = {
             },
             // TODO: User credentials type from next-aut
             async authorize(credentials: any) {
-              //  console.log(db)
-                // Do zod validation, OTP validation here
+
                 const hashedPassword = await bcrypt.hash(credentials.password, 10);
-               // console.log('i am here2')
                 const existingUser = await db.user.findFirst({
                     where: {
                         number: credentials.phone
