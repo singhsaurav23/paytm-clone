@@ -39,4 +39,8 @@ jobs:
           sudo docker pull srv29/paytm-clone:latest
           sudo docker stop paytm-app || true
           sudo docker rm paytm-app || true
-          sudo docker run -d --name paytm-app -p 3005:3000 srv29/paytm-clone:latest
+          sudo docker run -d --name paytm-app -p 3005:3000 \
+            --env NEXTAUTH_URL=${{ secrets.NEXTAUTH_URL }} \
+            --env DATABASE_URL=${{ secrets.DATABASE_URL }} \
+            --restart unless-stopped \
+            srv29/paytm-clone:latest
