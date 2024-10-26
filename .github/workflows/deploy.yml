@@ -44,3 +44,4 @@ jobs:
             --env DATABASE_URL=${{ secrets.DATABASE_URL }} \
             --restart unless-stopped \
             srv29/paytm-clone:latest
+        #  sudo docker exec paytm-app npx prisma migrate deploy
